@@ -1,0 +1,55 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`Ad & Disclosure Policy - ${SITE_TITLE}`} description="Advertising disclosure and affiliate policy statement." />
+		<style>
+			main {
+				width: 720px;
+				max-width: calc(100% - 2em);
+				margin: 0 auto;
+				padding: 3em 1em;
+				color: rgb(var(--gray-dark));
+			}
+			h1 {
+				margin-bottom: 0.5em;
+			}
+			h2 {
+				margin-top: 1.5em;
+				font-size: 1.3rem;
+			}
+			p, li {
+				line-height: 1.6;
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>Ad & Disclosure Policy</h1>
+			<p>Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+
+			<h2>1. Advertising Disclosure</h2>
+			<p>
+				This website uses display advertisements (such as Google AdSense and third-party ad exchanges) to generate revenue. Advertisements are clearly marked with labels such as "Advertisement" or "Sponsored".
+			</p>
+
+			<h2>2. Affiliate Links</h2>
+			<p>
+				Some links on this site may be affiliate links. If you click on an affiliate link and make a purchase, we may earn a small commission at no extra cost to you. We only recommend products or tools we believe bring genuine value to our readers.
+			</p>
+
+			<h2>3. Editorial Independence</h2>
+			<p>
+				Our editorial content is not influenced by advertisers or affiliate partnerships. All opinions expressed on this site are solely those of the author.
+			</p>
+		</main>
+		<Footer />
+	</body>
+</html>

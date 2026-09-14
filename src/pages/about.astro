@@ -1,0 +1,41 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`About ${SITE_TITLE}`} description="About Market Pulse Daily, a publication covering tech, markets, and the systems influencing modern business." />
+		<style>
+			main {
+				max-width: 760px;
+				padding: 3rem 1rem 5rem;
+			}
+			p {
+				line-height: 1.7;
+			}
+			h1 {
+				margin-bottom: 1rem;
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>About Market Pulse Daily</h1>
+			<p>
+				Market Pulse Daily covers the intersection of technology, finance, and business strategy. We report on the companies, policy shifts, and infrastructure changes that move markets and reshape how modern organizations operate.
+			</p>
+			<p>
+				Our focus spans AI, cloud infrastructure, cybersecurity, semiconductor supply chains, central banking, and the emerging signals that matter for investors, operators, and decision-makers.
+			</p>
+			<p>
+				The goal is simple: deliver clear reporting and thoughtful analysis without the noise of hype cycles or short-term market chatter.
+			</p>
+		</main>
+		<Footer />
+	</body>
+</html>

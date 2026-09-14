@@ -1,0 +1,67 @@
+---
+import { AUTHOR_NAME, AUTHOR_BIO } from '../consts';
+---
+
+<div class="author-bio-card">
+	<div class="author-avatar">
+		<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+			<path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+			<circle cx="12" cy="7" r="4" />
+		</svg>
+	</div>
+	<div class="author-details">
+		<span class="author-label">Written by</span>
+		<h3 class="author-name">{AUTHOR_NAME}</h3>
+		<p class="author-desc">{AUTHOR_BIO}</p>
+	</div>
+</div>
+
+<style>
+	.author-bio-card {
+		margin: 2.5rem 0 1.5rem 0;
+		padding: 1.5rem;
+		background: rgba(var(--gray-light), 0.4);
+		border: 1px solid rgba(var(--gray), 0.2);
+		border-radius: 12px;
+		display: flex;
+		align-items: flex-start;
+		gap: 1.25rem;
+	}
+
+	.author-avatar {
+		width: 52px;
+		height: 52px;
+		border-radius: 50%;
+		background: rgb(var(--black));
+		color: #fff;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+	}
+
+	.author-details {
+		flex: 1;
+	}
+
+	.author-label {
+		font-size: 0.75rem;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		color: rgb(var(--gray));
+		font-weight: 600;
+	}
+
+	.author-name {
+		margin: 0.2rem 0 0.4rem 0;
+		font-size: 1.15rem;
+		color: rgb(var(--black));
+	}
+
+	.author-desc {
+		margin: 0;
+		font-size: 0.92rem;
+		line-height: 1.5;
+		color: rgb(var(--gray-dark));
+	}
+</style>

@@ -1,0 +1,141 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+const topStories = [
+	{
+		title: 'AI infrastructure spending is reshaping the next wave of enterprise software',
+		category: 'Tech',
+		blurb: 'Cloud providers and chipmakers are racing to deliver the power base for agentic software and industrial automation.',
+	},
+	{
+		title: 'Bond markets signal a more cautious path for rate cuts in 2026',
+		category: 'Markets',
+		blurb: 'Investors are reassessing risk as inflation prints remain sticky and growth expectations diverge across regions.',
+	},
+	{
+		title: 'Cybersecurity budgets are moving from protection to recovery planning',
+		category: 'Policy',
+		blurb: 'Executives are shifting spending toward resilience, compliance automation, and breach-readiness across digital operations.',
+	},
+];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			.news-shell {
+				padding: 2rem 0 4rem;
+			}
+			.hero {
+				display: grid;
+				grid-template-columns: 1.3fr 0.7fr;
+				gap: 1.5rem;
+				margin-bottom: 2rem;
+			}
+			.hero-card,
+			.story-card {
+				background: rgba(255,255,255,0.72);
+				border: 1px solid rgba(96,115,159,0.18);
+				border-radius: 18px;
+				padding: 1.5rem;
+				box-shadow: 0 18px 38px rgba(15,18,25,0.08);
+			}
+			.kicker {
+				display: inline-block;
+				padding: 0.4rem 0.7rem;
+				border-radius: 999px;
+				background: #eaf1ff;
+				color: #1737a8;
+				font-size: 0.72rem;
+				font-weight: 700;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+			}
+			.hero-card h1 {
+				font-size: clamp(2.5rem, 5vw, 4.3rem);
+				line-height: 0.96;
+				margin: 1rem 0;
+			}
+			.hero-card p {
+				font-size: 1.1rem;
+				margin-bottom: 0;
+			}
+			.side-stack {
+				display: grid;
+				gap: 1rem;
+			}
+			.story-grid {
+				display: grid;
+				grid-template-columns: repeat(3, minmax(0, 1fr));
+				gap: 1.25rem;
+			}
+			.story-card h2 {
+				font-size: 1.4rem;
+				margin: 0.85rem 0 0.5rem;
+			}
+			.story-card p {
+				margin: 0;
+			}
+			.newsletter {
+				margin-top: 2rem;
+				padding: 1.5rem;
+				background: linear-gradient(135deg, #0f172a, #1d4ed8);
+				color: white;
+				border-radius: 18px;
+			}
+			.newsletter h3 {
+				color: white;
+				margin-bottom: 0.5rem;
+			}
+			@media (max-width: 900px) {
+				.hero,
+				.story-grid {
+					grid-template-columns: 1fr;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main class="news-shell">
+			<section class="hero">
+				<div class="hero-card">
+					<span class="kicker">Top story</span>
+					<h1>Capital, chips, and code are redefining the next global growth cycle.</h1>
+					<p>Market Pulse Daily tracks the technologies, sectors, and policy signals shaping value creation—from AI infrastructure to central bank decisions.</p>
+				</div>
+				<div class="side-stack">
+					<div class="story-card">
+						<span class="kicker">Markets</span>
+						<h2>Tech valuations remain elevated, but earnings quality is separating winners from hype.</h2>
+					</div>
+					<div class="story-card">
+						<span class="kicker">AI</span>
+						<h2>Enterprise buyers are shifting from pilots to measurable returns on automation.</h2>
+					</div>
+				</div>
+			</section>
+
+			<section class="story-grid">
+				{topStories.map((story) => (
+					<article class="story-card">
+						<span class="kicker">{story.category}</span>
+						<h2>{story.title}</h2>
+						<p>{story.blurb}</p>
+					</article>
+				))}
+			</section>
+
+			<section class="newsletter">
+				<h3>Morning Brief</h3>
+				<p>Fresh reporting on AI, markets, and macro risk delivered each day with a clear read on what matters.</p>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>

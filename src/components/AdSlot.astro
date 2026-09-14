@@ -1,0 +1,118 @@
+---
+interface Props {
+	slotType?: 'top-banner' | 'in-article' | 'bottom-banner' | 'sidebar';
+	client?: string;
+	slotId?: string;
+	format?: 'auto' | 'fluid' | 'rectangle' | 'horizontal';
+	responsive?: boolean;
+	label?: string;
+	class?: string;
+}
+
+const {
+	slotType = 'in-article',
+	client = import.meta.env.PUBLIC_ADSENSE_CLIENT_ID || '',
+	slotId = import.meta.env.PUBLIC_ADSENSE_SLOT_ID || '',
+	format = 'auto',
+	responsive = true,
+	label = 'Advertisement',
+	class: className = '',
+} = Astro.props;
+
+// Determine if real ad tags should render or fallback to preview container
+const hasAdConfig = Boolean(client && slotId);
+---
+
+<div class={`ad-container ad-${slotType} ${className}`}>
+	<span class="ad-label">{label}</span>
+	{
+		hasAdConfig ? (
+			<ins
+				class="adsbygoogle"
+				style="display:block"
+				data-ad-client={client}
+				data-ad-slot={slotId}
+				data-ad-format={format}
+				data-full-width-responsive={responsive ? 'true' : 'false'}
+			/>
+		) : (
+			<div class="ad-placeholder">
+				<div class="ad-placeholder-content">
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<rect width="20" height="14" x="2" y="5" rx="2" />
+						<line x1="2" x2="22" y1="10" y2="10" />
+					</svg>
+					<span>Ad Placement ({slotType.replace('-', ' ')}) — Ready for AdSense / Mediavine</span>
+				</div>
+			</div>
+		)
+	}
+</div>
+
+{
+	hasAdConfig && (
+		<script is:inline>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	)
+}
+
+<style>
+	.ad-container {
+		margin: 2rem auto;
+		text-align: center;
+		width: 100%;
+		clear: both;
+	}
+
+	.ad-label {
+		display: block;
+		font-size: 0.7rem;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		color: rgb(var(--gray));
+		margin-bottom: 0.35rem;
+		font-weight: 600;
+	}
+
+	/* Prevent Layout Shift (CLS) with baseline min-heights */
+	.ad-top-banner {
+		min-height: 90px;
+		max-width: 728px;
+	}
+
+	.ad-in-article {
+		min-height: 250px;
+		max-width: 100%;
+	}
+
+	.ad-bottom-banner {
+		min-height: 90px;
+		max-width: 728px;
+	}
+
+	.ad-sidebar {
+		min-height: 250px;
+		max-width: 300px;
+	}
+
+	.ad-placeholder {
+		background-color: rgba(var(--gray-light), 0.5);
+		border: 1px dashed rgba(var(--gray), 0.4);
+		border-radius: 8px;
+		padding: 1.5rem 1rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: rgb(var(--gray));
+		font-size: 0.85rem;
+		font-weight: 500;
+		transition: background-color 0.2s ease;
+	}
+
+	.ad-placeholder-content {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+</style>
