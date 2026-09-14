@@ -4,21 +4,21 @@ import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
-const topStories = [
+const focusTopics = [
 	{
-		title: 'AI infrastructure spending is reshaping the next wave of enterprise software',
-		category: 'Tech',
-		blurb: 'Cloud providers and chipmakers are racing to deliver the power base for agentic software and industrial automation.',
+		title: 'Build a budgeting system that actually lasts',
+		category: 'Budgeting',
+		blurb: 'Simple frameworks for turning financial goals into repeatable habits that work in real life.',
 	},
 	{
-		title: 'Bond markets signal a more cautious path for rate cuts in 2026',
-		category: 'Markets',
-		blurb: 'Investors are reassessing risk as inflation prints remain sticky and growth expectations diverge across regions.',
+		title: 'How to start investing without overcomplicating it',
+		category: 'Investing',
+		blurb: 'A beginner-friendly approach to risk, diversification, and building confidence with your portfolio.',
 	},
 	{
-		title: 'Cybersecurity budgets are moving from protection to recovery planning',
-		category: 'Policy',
-		blurb: 'Executives are shifting spending toward resilience, compliance automation, and breach-readiness across digital operations.',
+		title: 'The debt payoff playbook that reduces stress fast',
+		category: 'Debt',
+		blurb: 'Strategy-first advice for paying down debt without sacrificing your essential priorities.',
 	},
 ];
 ---
@@ -28,7 +28,7 @@ const topStories = [
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 		<style>
-			.news-shell {
+			.finance-shell {
 				padding: 2rem 0 4rem;
 			}
 			.hero {
@@ -38,7 +38,7 @@ const topStories = [
 				margin-bottom: 2rem;
 			}
 			.hero-card,
-			.story-card {
+			.topic-card {
 				background: rgba(255,255,255,0.72);
 				border: 1px solid rgba(96,115,159,0.18);
 				border-radius: 18px;
@@ -49,8 +49,8 @@ const topStories = [
 				display: inline-block;
 				padding: 0.4rem 0.7rem;
 				border-radius: 999px;
-				background: #eaf1ff;
-				color: #1737a8;
+				background: #ecfdf5;
+				color: #0f766e;
 				font-size: 0.72rem;
 				font-weight: 700;
 				letter-spacing: 0.08em;
@@ -69,32 +69,32 @@ const topStories = [
 				display: grid;
 				gap: 1rem;
 			}
-			.story-grid {
+			.topic-grid {
 				display: grid;
 				grid-template-columns: repeat(3, minmax(0, 1fr));
 				gap: 1.25rem;
 			}
-			.story-card h2 {
+			.topic-card h2 {
 				font-size: 1.4rem;
 				margin: 0.85rem 0 0.5rem;
 			}
-			.story-card p {
+			.topic-card p {
 				margin: 0;
 			}
-			.newsletter {
+			.callout {
 				margin-top: 2rem;
 				padding: 1.5rem;
-				background: linear-gradient(135deg, #0f172a, #1d4ed8);
+				background: linear-gradient(135deg, #0f766e, #0f172a);
 				color: white;
 				border-radius: 18px;
 			}
-			.newsletter h3 {
+			.callout h3 {
 				color: white;
 				margin-bottom: 0.5rem;
 			}
 			@media (max-width: 900px) {
 				.hero,
-				.story-grid {
+				.topic-grid {
 					grid-template-columns: 1fr;
 				}
 			}
@@ -102,38 +102,38 @@ const topStories = [
 	</head>
 	<body>
 		<Header />
-		<main class="news-shell">
+		<main class="finance-shell">
 			<section class="hero">
 				<div class="hero-card">
-					<span class="kicker">Top story</span>
-					<h1>Capital, chips, and code are redefining the next global growth cycle.</h1>
-					<p>Market Pulse Daily tracks the technologies, sectors, and policy signals shaping value creation—from AI infrastructure to central bank decisions.</p>
+					<span class="kicker">This week</span>
+					<h1>Money systems that help you grow with less stress.</h1>
+					<p>Wealth Notes is a practical personal finance blog for budgeting, saving, investing, and building a life that feels financially secure—not just technically optimized.</p>
 				</div>
 				<div class="side-stack">
-					<div class="story-card">
-						<span class="kicker">Markets</span>
-						<h2>Tech valuations remain elevated, but earnings quality is separating winners from hype.</h2>
+					<div class="topic-card">
+						<span class="kicker">Save smarter</span>
+						<h2>Emergency funds are the foundation of good money decisions.</h2>
 					</div>
-					<div class="story-card">
-						<span class="kicker">AI</span>
-						<h2>Enterprise buyers are shifting from pilots to measurable returns on automation.</h2>
+					<div class="topic-card">
+						<span class="kicker">Think long-term</span>
+						<h2>Compounding works best when your habits are boring and consistent.</h2>
 					</div>
 				</div>
 			</section>
 
-			<section class="story-grid">
-				{topStories.map((story) => (
-					<article class="story-card">
-						<span class="kicker">{story.category}</span>
-						<h2>{story.title}</h2>
-						<p>{story.blurb}</p>
+			<section class="topic-grid">
+				{focusTopics.map((topic) => (
+					<article class="topic-card">
+						<span class="kicker">{topic.category}</span>
+						<h2>{topic.title}</h2>
+						<p>{topic.blurb}</p>
 					</article>
 				))}
 			</section>
 
-			<section class="newsletter">
-				<h3>Morning Brief</h3>
-				<p>Fresh reporting on AI, markets, and macro risk delivered each day with a clear read on what matters.</p>
+			<section class="callout">
+				<h3>Money, simplified.</h3>
+				<p>Clear guidance for everyday income, spending, investing, and financial calm—without the noise of hype-driven finance.</p>
 			</section>
 		</main>
 		<Footer />

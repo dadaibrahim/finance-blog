@@ -1,6 +1,6 @@
 // Global site metadata constants used across pages and RSS feed.
 
-export const SITE_TITLE = 'Market Pulse Daily';
-export const SITE_DESCRIPTION = 'Tech and finance news, market analysis, and breaking stories at the intersection of innovation and capital.';
-export const AUTHOR_NAME = 'Market Pulse Daily';
-export const AUTHOR_BIO = 'A business and technology publication covering AI, markets, policy, cybersecurity, and the companies shaping the next decade of growth.';
+export const SITE_TITLE = 'Wealth Notes';
+export const SITE_DESCRIPTION = 'Personal finance insights on budgeting, saving, investing, and building wealth with clarity and confidence.';
+export const AUTHOR_NAME = 'Wealth Notes';
+export const AUTHOR_BIO = 'A personal finance journal focused on practical money habits, smart investing, and building a life of financial freedom.';
