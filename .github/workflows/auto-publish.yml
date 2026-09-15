@@ -1,0 +1,39 @@
+name: Auto-publish finance post
+
+on:
+  schedule:
+    # 09:00 IST on Tuesdays and Fridays (03:30 UTC)
+    - cron: "30 3 * * 2,5"
+  workflow_dispatch: {} # lets you trigger a run manually from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  generate-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Generate post
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node scripts/generate-post.mjs
+
+      - name: Commit and push
+        run: |
+          git config user.name "wealth-notes-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add src/content/blog scripts/topics-used.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "chore: auto-publish new post"
+          git push
