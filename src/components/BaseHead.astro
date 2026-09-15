@@ -18,6 +18,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const { title, description, image = FallbackImage } = Astro.props;
 // Google AdSense Client ID configuration
 const adClientId = import.meta.env.PUBLIC_ADSENSE_CLIENT_ID || '';
+
+// Umami Analytics configuration
+const umamiScriptUrl = import.meta.env.PUBLIC_UMAMI_SCRIPT_URL || import.meta.env.NEXT_PUBLIC_UMAMI_SCRIPT_URL || 'https://central-analytics.vercel.app/script.js';
+const umamiWebsiteId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID || import.meta.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID || '';
 ---
 
 <!-- Global Metadata -->
@@ -63,4 +67,16 @@ const adClientId = import.meta.env.PUBLIC_ADSENSE_CLIENT_ID || '';
 		/>
 	)
 }
+
+<!-- Umami Analytics Tracker Script -->
+{
+	umamiWebsiteId && (
+		<script
+			async
+			src={umamiScriptUrl}
+			data-website-id={umamiWebsiteId}
+		/>
+	)
+}
+
 
