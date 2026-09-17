@@ -20,6 +20,15 @@ const posts = (await getCollection('blog')).sort(
 			main {
 				width: 960px;
 			}
+			h1 {
+				margin: 0 0 0.5rem;
+			}
+			.intro {
+				max-width: 640px;
+				margin: 0 0 2rem;
+				line-height: 1.6;
+				color: rgb(var(--gray-dark));
+			}
 			ul {
 				display: flex;
 				flex-wrap: wrap;
@@ -89,6 +98,11 @@ const posts = (await getCollection('blog')).sort(
 	<body>
 		<Header />
 		<main>
+			<h1>The Journal</h1>
+			<p class="intro">
+				Articles on budgeting systems, investing basics, and debt payoff strategy — practical
+				money habits you can actually stick with, written in plain language.
+			</p>
 			<section>
 				<ul>
 					{
