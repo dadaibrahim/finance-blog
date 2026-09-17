@@ -13,7 +13,8 @@ interface Props {
 	image?: ImageMetadata;
 }
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const normalizedPath = Astro.url.pathname === '/' ? '/' : `${Astro.url.pathname.replace(/\/$/, '')}/`;
+const canonicalURL = new URL(normalizedPath, Astro.site);
 
 const { title, description, image = FallbackImage } = Astro.props;
 // Google AdSense Client ID configuration
@@ -51,10 +52,10 @@ const umamiWebsiteId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID || import.meta.en
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
-<meta property="og:url" content={Astro.url} />
+<meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(image.src, Astro.url)} />
+<meta property="og:image" content={new URL(image.src, canonicalURL)} />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />

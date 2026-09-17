@@ -1,0 +1,11 @@
+# Wealth Notes
+
+> Personal finance insights on budgeting, saving, investing, and building wealth with clarity and confidence.
+
+Wealth Notes is a personal finance blog covering practical budgeting systems, beginner-friendly investing, and debt payoff strategy, written for people who want clear, sustainable money habits rather than hustle-culture advice.
+
+## Pages
+
+- [Home](https://wealthectual.vercel.app/): Overview of the site's core topics — budgeting, investing, and debt.
+- [Journal](https://wealthectual.vercel.app/blog/): Full archive of articles.
+- [About](https://wealthectual.vercel.app/about/): Who writes Wealth Notes and what the site is for.
