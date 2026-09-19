@@ -10,7 +10,7 @@ export const onRequest: MiddlewareHandler = async (context, next) => {
 
 		// Only report errors to the webhook if we are not in development mode
 		if (!import.meta.env.DEV) {
-			Try {
+			try {
 				await fetch(errorWebhook, {
 					method: 'POST',
 					headers: { 'Content-Type': 'application/json' },
