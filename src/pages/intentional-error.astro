@@ -1,0 +1,14 @@
+---
+if (import.meta.env.DEV) {
+	throw new Error('Intentional instrumentation test error');
+}
+---
+
+<html lang="en">
+	<head>
+		<title>Intentional Error Test</title>
+	</head>
+	<body>
+		<p>Intentional error testing is disabled in production.</p>
+	</body>
+</html>
